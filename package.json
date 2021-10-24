@@ -1,0 +1,115 @@
+{
+  "name": "aether.link",
+  "version": "0.1.3",
+  "author": "Smultar <Jason@smultar.com>",
+  "description": "Quality of life tool, for Final Fantasy modders.",
+  "private": false,
+  "main": "./public/electron.js",
+  "homepage": "./",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "electron-store": "^8.0.1",
+    "electron-updater": "^4.3.9",
+    "glasstron": "^0.1.0",
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3",
+    "sass": "^1.42.1",
+    "wait-on": "^6.0.0"
+  },
+
+  "devDependencies": {
+    "electronmon": "^2.0.2",
+    "concurrently": "^6.3.0",
+    "electron": "^15.3.0",
+    "electron-builder": "^22.13.1"
+  },
+
+  "scripts": {
+    "react:start": "react-scripts start",
+    "react:build": "react-scripts build",
+    "react:eject": "react-scripts eject",
+    "electron:start": "concurrently -k \"cross-env BROWSER=none npm run react:start\" \"wait-on http://localhost:3000 && electronmon .\"",
+    "electron:package:win": "concurrently -k \"npm build \" \"electron-builder -w --publish always\"",
+    "postinstall": "electron-builder install-app-deps" 
+  },
+
+  "browserslist": {
+    "production": [
+      "last 1 electron version",
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+
+    "development": [
+      "last 1 electron version",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+
+  "build": {
+    "appId": "com.smultar.aether.link",
+    "productName": "aether.link",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+
+    "publish": [{
+      "provider": "github",
+      "owner": "smultar",
+      "repo": "aether.link"
+    }],
+
+    "portable": {
+      "artifactName": "aether.link.exe",
+      "artifactCompanyName": "Smultar",
+      "artifactDescription": "Quality of life tool, for Final Fantasy modders.",
+      "artifactCopyright": "Copyright © Smultar 2021"
+    },
+
+    "directories": {
+      "buildResources": "public"
+    },
+
+    "mac": {
+      "target": "dmg"
+    },
+
+    "win": {
+      "target": "nsis",
+      "icon": "build/icons/icon.ico"
+    },
+
+    "linux": {
+      "target": "deb"
+    }
+    
+  },
+
+  "keywords": [
+    "ffxiv",
+    "ffxiv-modding",
+    "ffxiv-modding-tools",
+    "ffxiv-modding-tools-aether.link",
+    "ffxiv-modding-tools-aether.link-smultar",
+    "final-fantasy-xiv",
+    "modding-tools",
+    "smultar",
+    "aether.link"
+  ],
+
+  "repository": {
+    "private": false,
+    "owner": "smultar",
+    "name": "aether.link",
+    "description": "Quality of life tool, for Final Fantasy modders.",
+    "url" : "https://github.com/smultar/aether.link.git",
+    "type" : "git"
+  }
+}
